@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+<link th:href="@{/css/cms.css}" rel="stylesheet" />
+
+<title>Update friend</title>
+</head>
+<body>
+	<!-- Header -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<div class="container">
+			<a class="navbar-brand" href="#"><i class="fas fa-clipboard-list"></i>
+				Phone Book</a>
+			<h5 class="m-0">
+				<a href="/phonebook" class="badge badge-warning">View List</a>
+			</h5>
+		</div>
+	</nav>
+
+
+	<!-- Main -->
+	<main role="main">
+		<div class="container">
+			<div class="row mt-5">
+				<div class="col-4 m-auto">
+					<p class="alert alert-success" th:if="${status}"
+						th:text="${message}"></p>
+					<form class="addingFrm" action="#" th:action="@{/phonebook/update}"
+						th:object="${friend}" method="post">
+						<input type="hidden" name="name" class="form-control" id="inputId"
+							th:field="*{friendId}" />
+						<div class="form-group">
+							<label for="inputName" class="d-flex align-items-center">Name
+								<i class="fas fa-star"></i>
+							</label> <input type="text" name="name" class="form-control"
+								id="inputName" th:field="*{name}" /> <span class="error-msg"
+								th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+						</div>
+						<div class="form-group">
+							<label for="inputEmail" class="d-flex align-items-center">Email<i
+								class="fas fa-star"></i></label> <input type="text" name="email"
+								class="form-control" id="inputEmail"
+								aria-describedby="emailHelp" th:field="*{email}" /> <span
+								class="error-msg" th:if="${#fields.hasErrors('email')}"
+								th:errors="*{email}"></span>
+						</div>
+						<div class="form-group">
+							<label for="inputPhone" class="d-flex align-items-center">Phone<i
+								class="fas fa-star"></i></label> <input type="text" maxlength="12"
+								name="phone" class="form-control" id="inputPhone"
+								th:field="*{phone}" /> <span class="error-msg"
+								th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></span>
+						</div>
+						<div class="form-group">
+							<label for="inputName">Home</label> <input type="text"
+								name="home" class="form-control" id="inputHome"
+								aria-describedby="homeHelp" th:field="*{home}" />
+						</div>
+						<button type="submit" class="btn btn-success w-100">Update
+							Contact</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<!-- Footer -->
+	<footer class="container fixed-bottom"
+		th:include="fragments/footer :: footer"></footer>
+</body>

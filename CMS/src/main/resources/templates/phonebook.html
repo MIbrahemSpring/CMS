@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+<link th:href="@{/css/cms.css}" rel="stylesheet" />
+
+<title>CMS</title>
+</head>
+<body>
+	<!-- Header -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<div class="container">
+			<a class="navbar-brand" href="#"><i class="fas fa-clipboard-list"></i>
+				Phone Book</a>
+		</div>
+	</nav>
+
+	<!-- Main -->
+	<main role="main">
+		<div class="container">
+			<div class="row mt-5">
+				<div class="col-4 mb-2">
+					<a class="btn btn-success" href="/phonebook/add" role="button">Add
+						Contact</a>
+				</div>
+				<div class="col-8">
+					<form class="form-inline">
+						<input class="form-control ml-auto" type="text"
+							placeholder="Search" aria-label="Search">
+						<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+					</form>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12 mt-5 m-auto table-wrapper">
+					<p class="lead alert alert-info" th:if="${friends.size() <= 0}">No friends added yet</p>
+					<table class="table" th:include="fragments/table :: table"
+					th:if="${friends.size() > 0}"></table>
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<!-- Footer -->
+	<footer class="container fixed-bottom"
+		th:include="fragments/footer :: footer"></footer>
+</body>
+</html>

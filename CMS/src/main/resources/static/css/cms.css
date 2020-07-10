@@ -1,0 +1,37 @@
+.addingFrm {
+	padding: 20px;
+	background: #fff;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+}
+.delButton{
+	border:none;
+	background: none;
+	
+}
+.delButton:focus{
+	outline: none !important
+}
+.addingFrm .fa-star {
+	font-size: 6px;
+	color: #a21414
+}
+
+.error-msg {
+	color: #a21414;
+	font-size: 14px;
+	display: block;
+}
+
+.fa-edit {
+	color: #6c757d
+}
+
+.fa-trash {
+	color: #dc3545
+}
+
+.table-wrapper {
+	height: 400px !important;
+	overflow: scroll;
+}

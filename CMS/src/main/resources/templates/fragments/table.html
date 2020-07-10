@@ -1,0 +1,46 @@
+<table class="table">
+	<thead>
+		<tr>
+			<th scope="col">Name</th>
+			<th scope="col">Email</th>
+			<th scope="col">Phone</th>
+			<th scope="col">Home</th>
+			<th scope="col" class="text-center">Edit</th>
+			<th scope="col" class="text-center">Delete</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr th:each="friend : ${friends}">
+			<td th:text=${{friend.name}}></td>
+			<td th:text=${{friend.email}}></td>
+			<td th:text=${{friend.phone}}></td>
+			<td th:text=${{friend.home}}></td>
+			<td class="text-center"><a
+				th:href="@{/phonebook/update/{id} (id=${friend.friendId})}"><i
+					class="fas fa-edit"></i></a></td>
+			<td class="text-center">
+				<!-- Button trigger modal -->
+				<button type="button" class="delButton" data-toggle="modal"
+					data-target="#staticBackdrop">
+					<i class="fas fa-trash"></i>
+				</button> <!-- Modal -->
+				<div class="modal" id="staticBackdrop" data-backdrop="static"
+					data-keyboard="false" tabindex="-1" role="dialog"
+					aria-labelledby="staticBackdropLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-body">Are you sure you want to delete
+								your friend?</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary"
+									data-dismiss="modal">Close</button>
+								<a
+									th:href="@{/phonebook/deleteFriend/{id} (id=${friend.friendId})}">Delete</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</td>
+		</tr>
+	</tbody>
+</table>
